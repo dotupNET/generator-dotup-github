@@ -1,3 +1,3 @@
-import { MyGenerator } from './MyGenerator';
+import { GithubGenerator } from './GithubGenerator';
 
-module.exports = MyGenerator;
+module.exports = GithubGenerator;

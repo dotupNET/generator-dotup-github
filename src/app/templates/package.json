@@ -1,7 +1,10 @@
 {
-  "version": "0.0.0",
-  "name": "<%= niceDay %>",
-  "author": {
-    "name": "<%= yourName %>"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+<%= githubUrl %>.git"
+  },
+  "bugs": {
+    "url": "<%= githubUrl %>/issues"
+  },
+  "homepage": "<%= githubUrl %>#readme"
 }
