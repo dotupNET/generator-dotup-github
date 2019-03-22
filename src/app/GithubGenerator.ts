@@ -18,6 +18,8 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
   }
 
   async initializing(): Promise<void> {
+    if (this.skipGenerator) { return; }
+
     const opt = <PartialQuestions>this.options;
 
     this.addQuestion(
@@ -58,6 +60,8 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
   }
 
   async configuring(): Promise<void> {
+    if (this.skipGenerator) { return; }
+
     // If the repository exist, we do nothing
     const git = new GithubApiClient(this.answers.githubUserName, this.answers.password);
     this.repositoryExists = await git.ownRepositoryExists(this.answers.repositoryName);
@@ -91,9 +95,12 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
   // async writing(): Promise<void> {  }
 
   async install(): Promise<void> {
+    if (this.skipGenerator) { return; }
   }
 
   async end(): Promise<void> {
+    if (this.skipGenerator) { return; }
+
     const git = new GithubApiClient(this.answers.githubUserName, this.answers.password);
     const url = git.getRepositoryUrl(this.answers.repositoryName);
 

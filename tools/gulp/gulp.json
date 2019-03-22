@@ -1,6 +1,6 @@
 {
   "build": true,
-  "docs": true,
+  "docs": false,
   "mocha": true,
   "tslint": true,
   "watch": false,
