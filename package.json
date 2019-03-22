@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "generator-dotup-github",
   "description": "Yeoman generator for github. Creates repository and npm scripts to tag after publishing.",
   "author": {
