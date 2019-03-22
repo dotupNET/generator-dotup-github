@@ -23,9 +23,9 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
     const opt = <PartialQuestions>this.options;
 
     this.addQuestion(
-      new StoreQuestion(GithubQuestions.githubUserName, {
+      new StoreQuestion(GithubQuestions.userName, {
         message: 'Enter your name',
-        default: opt.githubUserName,
+        default: opt.userName,
         type: InquirerQuestionType.input,
         When: x => opt.userName === undefined
       })
