@@ -1,6 +1,6 @@
 import { GithubApiClient } from 'dotup-ts-github-api';
 import { Nested, TypeSaveProperty } from 'dotup-ts-types';
-import { BaseGenerator, InquirerQuestionType, IProperty, Question, StoreQuestion } from 'dotup-typescript-yeoman-generators';
+import { BaseGenerator, InquirerQuestionType, IProperty, Question, StoreQuestion, GeneratorOptions, SharedOptions } from 'dotup-typescript-yeoman-generators';
 import { GithubQuestions } from './GithubQuestions';
 
 type PartialQuestions = Partial<TypeSaveProperty<Nested<GithubQuestions, string>>>;
@@ -10,11 +10,13 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
 
   private repositoryExists: boolean;
 
-  constructor(args: string | string[], options: Partial<TypeSaveProperty<Nested<GithubQuestions, string>>>) {
-    super(args, options);
+  constructor(args: string | string[], options: GeneratorOptions<GithubQuestions>, sharedOptions?: SharedOptions<GithubQuestions>) {
+    super(args, options, sharedOptions);
     this.registerMethod(this);
 
     this.writeOptionsToAnswers(GithubQuestions);
+
+    this.trySubscribeSharedOption(GithubQuestions.projectName);
   }
 
   async initializing(): Promise<void> {
