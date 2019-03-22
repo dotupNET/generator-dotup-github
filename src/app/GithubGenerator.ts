@@ -16,6 +16,7 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
 
     this.writeOptionsToAnswers(GithubQuestions);
 
+    this.trySubscribeSharedOption(GithubQuestions.userName);
     this.trySubscribeSharedOption(GithubQuestions.projectName);
   }
 
