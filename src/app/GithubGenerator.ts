@@ -15,9 +15,6 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
     this.registerMethod(this);
 
     this.writeOptionsToAnswers(GithubQuestions);
-
-    this.trySubscribeSharedOption(GithubQuestions.userName);
-    this.trySubscribeSharedOption(GithubQuestions.projectName);
   }
 
   async initializing(): Promise<void> {
@@ -30,7 +27,7 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
         message: 'Enter your name',
         default: opt.userName,
         type: InquirerQuestionType.input,
-        When: x => opt.userName === undefined
+        When: x => this.tryGetAnswer(GithubQuestions.userName) === undefined
       })
     );
 
@@ -39,7 +36,7 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
         message: 'Enter your github user name',
         default: opt.githubUserName,
         type: InquirerQuestionType.input,
-        When: x => opt.githubUserName === undefined
+        When: x => this.tryGetAnswer(GithubQuestions.githubUserName) === undefined
       })
     );
 
@@ -56,7 +53,7 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
         type: InquirerQuestionType.input,
         message: 'Enter repository name',
         description: 'Repository name',
-        When: x => opt.projectName === undefined
+        When: x => this.tryGetAnswer(GithubQuestions.projectName) === undefined
       })
     );
 
