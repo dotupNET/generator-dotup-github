@@ -2,6 +2,6 @@ export enum GithubQuestions {
   userName = 'userName',
   githubUserName = 'githubUserName',
   password = 'password',
-  repositoryName = 'repositoryName',
+  projectName = 'projectName',
   githubUrl = 'githubUrl'
 }

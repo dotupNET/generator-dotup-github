@@ -49,11 +49,11 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
     );
 
     this.addQuestion(
-      new Question(GithubQuestions.repositoryName, {
+      new Question(GithubQuestions.projectName, {
         type: InquirerQuestionType.input,
         message: 'Enter repository name',
         description: 'Repository name',
-        When: x => opt.repositoryName === undefined
+        When: x => opt.projectName === undefined
       })
     );
 
@@ -64,19 +64,19 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
 
     // If the repository exist, we do nothing
     const git = new GithubApiClient(this.answers.githubUserName, this.answers.password);
-    this.repositoryExists = await git.ownRepositoryExists(this.answers.repositoryName);
+    this.repositoryExists = await git.ownRepositoryExists(this.answers.projectName);
 
     // Set remote origin url
-    this.answers.githubUrl = git.getRepositoryUrl(this.answers.repositoryName);
+    this.answers.githubUrl = git.getRepositoryUrl(this.answers.projectName);
 
     if (this.repositoryExists) {
       // Repo already exitst
-      this.logYellow(`Github repository '${this.answers.repositoryName}' already exists.`);
+      this.logYellow(`Github repository '${this.answers.projectName}' already exists.`);
     } else {
 
       // Create the repository
       const result = await git.createRepository({
-        name: this.answers.repositoryName,
+        name: this.answers.projectName,
         private: false
       });
 
@@ -102,7 +102,7 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
     if (this.skipGenerator) { return; }
 
     const git = new GithubApiClient(this.answers.githubUserName, this.answers.password);
-    const url = git.getRepositoryUrl(this.answers.repositoryName);
+    const url = git.getRepositoryUrl(this.answers.projectName);
 
     this.spawnCommandSync('git', ['remote', 'add', 'origin', url], {
       cwd: this.destinationPath()
