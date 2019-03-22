@@ -10,8 +10,8 @@ export class GithubGenerator extends BaseGenerator<GithubQuestions> {
 
   private repositoryExists: boolean;
 
-  constructor(args: string | string[], options: GeneratorOptions<GithubQuestions>, sharedOptions?: SharedOptions<GithubQuestions>) {
-    super(args, options, sharedOptions);
+  constructor(args: string | string[], options: GeneratorOptions<GithubQuestions>) {
+    super(args, options);
     this.registerMethod(this);
 
     this.writeOptionsToAnswers(GithubQuestions);
