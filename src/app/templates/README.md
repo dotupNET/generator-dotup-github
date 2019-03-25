@@ -2,14 +2,25 @@
 
 # <%= projectName %>
 
+## Description
+
 ## Installation
 
-## Getting To Know Yeoman
+## Configuration
+
+## Usage
+
+## Release Notes
+### 1.0.0
+
+Fixes/Features:
+- Initial release
 
 ## License
 
 MIT © [<%= userName %>](https://github.com/<%= githubUserName %>/)
 
+**Enjoy!**
 
 [npm-image]: https://badge.fury.io/js/<%= projectName %>.svg
 [npm-url]: https://npmjs.org/package/<%= projectName %>
